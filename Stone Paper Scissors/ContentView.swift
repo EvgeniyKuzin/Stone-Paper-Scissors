@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-private let figures = ["scissors", "newspaper", "square"]
-
 struct ContentView: View {
+    
+    private let figures = ["scissors", "newspaper", "square"]
     
     @State private var pointsCountOne = 0
     @State private var pointsCountTwo = 0
@@ -19,27 +19,22 @@ struct ContentView: View {
     
     @State private var winner = "arrow.triangle.2.circlepath.circle"
  
-    
     var body: some View {
         VStack {
             Text("Очки: \(pointsCountOne)")
                 .font(.system(size: 24))
                 .bold()
                 .rotationEffect(.degrees(180))
-            
             Image(systemName: imageOne)
                 .resizable()
                 .scaledToFit()
-            
             Image(systemName: winner)
                 .resizable()
                 .frame(width: 100, height: 100, alignment: .center)
                 .scaledToFit()
-            
             Image(systemName: imageTwo )
                 .resizable()
                 .scaledToFit()
-            
             Text("Очки: \(pointsCountTwo)")
                 .font(.system(size: 24))
                 .bold()
@@ -50,7 +45,6 @@ struct ContentView: View {
             getTheWinner()
             showTheWinner()
         }
-        
         .padding()
     }
 
