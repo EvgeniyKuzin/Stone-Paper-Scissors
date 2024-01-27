@@ -16,6 +16,8 @@ struct ContentView: View {
     
     @State private var imageOne = "square"
     @State private var imageTwo = "square"
+    
+    @State private var winner = "arrow.triangle.2.circlepath.circle"
  
     
     var body: some View {
@@ -27,6 +29,11 @@ struct ContentView: View {
             
             Image(systemName: imageOne)
                 .resizable()
+                .scaledToFit()
+            
+            Image(systemName: winner)
+                .resizable()
+                .frame(width: 100, height: 100, alignment: .center)
                 .scaledToFit()
             
             Image(systemName: imageTwo )
@@ -41,12 +48,13 @@ struct ContentView: View {
             imageOne = figures.randomElement() ?? ""
             imageTwo = figures.randomElement() ?? ""
             getTheWinner()
+            showTheWinner()
         }
         
         .padding()
     }
 
-    func getTheWinner() {
+    private func getTheWinner() {
         if imageOne == "scissors" && imageTwo == "newspaper" {
             pointsCountOne += 1
         } else if imageOne == "newspaper" && imageTwo == "square" {
@@ -60,6 +68,16 @@ struct ContentView: View {
             pointsCountTwo += 1
         } else if imageTwo == "square" && imageTwo == "scissors" {
             pointsCountTwo += 1
+        }
+    }
+    
+    private func showTheWinner() {
+        if pointsCountOne > pointsCountTwo {
+            winner = "arrowshape.up"
+        } else if pointsCountOne < pointsCountTwo {
+            winner = "arrowshape.down"
+        } else {
+            winner = "arrow.triangle.2.circlepath.circle"
         }
     }
 }
